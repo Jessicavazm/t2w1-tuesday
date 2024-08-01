@@ -1,6 +1,10 @@
 # Import class Flask from flask library
 # Import request method to make HTTP requests to a server
+# Import json and random function to create a coin flip function that auto generates a choice
+
 from flask import Flask,request
+import json
+import random
 
 # (__name__) = "__main__"
 app = Flask(__name__)
@@ -17,6 +21,13 @@ def about():
 @app.route("/contact")
 def contact_us():
     return "My contact details are 0238 283 283"
+
+# Coinflip challenge from ED using random function
+@app.route("/coinflip")
+def coin_flip():
+    options = ["heads", "tails"]
+    choice = random.choice(options)
+    return json.dumps({"result": choice})
 
 
 # List of dictionaries combined in a list, this is a JSON file.
